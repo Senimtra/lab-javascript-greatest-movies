@@ -40,8 +40,22 @@ function scoresAverage(movies) {
   }
 }
 
-// Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore() {}
+// ###############################
+// ## Iteration 4: Drama movies ##
+// ###############################
+
+// ### Get the average of Drama Movies ###
+
+function dramaMoviesScore(movies) {
+  const dramaFilter = movies.filter((dramas) => dramas.genre.includes('Drama'));
+  if (dramaFilter.length === 0) {
+    return 0;
+  } else {
+    const scoreArr = dramaFilter.map((imdb) => imdb.score);
+    const sumScores = scoreArr.reduce((sum, score) => sum + score);
+    return Number((sumScores / dramaFilter.length).toFixed(2));
+  }
+}
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear() {}
