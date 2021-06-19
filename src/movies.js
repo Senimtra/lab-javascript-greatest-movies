@@ -1,6 +1,6 @@
-// ####################################
-// ## Iteration 1: All directors? -  ##
-// ####################################
+// ###################################
+// ## Iteration 1: All directors? - ##
+// ###################################
 
 // ### Get the array of all directors. ###
 
@@ -15,7 +15,13 @@ function getAllDirectors(movies) {
 
 // ### How many drama movies did STEVEN SPIELBERG direct? ###
 
-function howManyMovies() {}
+function howManyMovies(movies) {
+  const sbergDramas = movies.filter(
+    (movie) =>
+      movie.director === 'Steven Spielberg' && movie.genre.includes('Drama')
+  );
+  return sbergDramas.length;
+}
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 function scoresAverage() {}
