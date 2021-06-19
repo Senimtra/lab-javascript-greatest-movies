@@ -23,8 +23,22 @@ function howManyMovies(movies) {
   return sbergDramas.length;
 }
 
-// Iteration 3: All scores average - Get the average of all scores with 2 decimals
-function scoresAverage() {}
+// #####################################
+// ## Iteration 3: All scores average ##
+// #####################################
+
+// ### Get the average of all scores with 2 decimals ###
+
+function scoresAverage(movies) {
+  if (!movies.length) {
+    return 0;
+  } else {
+    const noScore = movies.filter((norank) => norank.score);
+    const scoreArr = noScore.map((imdb) => imdb.score);
+    const sumScores = scoreArr.reduce((sum, score) => sum + score);
+    return Number((sumScores / movies.length).toFixed(2));
+  }
+}
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
 function dramaMoviesScore() {}
