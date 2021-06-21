@@ -93,15 +93,32 @@ function orderAlphabetically(movies) {
   return titles.sort().slice(0, 20);
 }
 
-// BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
-function turnHoursToMinutes() {}
+// ######################################
+// ## BONUS - Iteration 7: Time Format ##
+// ######################################
+
+// ### Turn duration of the movies from hours to minutes ###
+function turnHoursToMinutes(movies) {
+  const movieMinutes = movies.map((film) => {
+    const hours = film.duration.split('h');
+    const minutes = film.duration.slice(3, -3);
+    console.log(hours[0]);
+    console.log(Number(minutes));
+    return {
+      title: film.title,
+      year: film.year,
+      director: film.director,
+      duration: Number(hours[0]) * 60 + Number(minutes),
+      genre: film.genre,
+      score: film.score
+    };
+  });
+  console.log(movieMinutes);
+  return movieMinutes;
+}
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg() {}
-
-// #########################################################
-// ## Iteration 1.1: Bonus - Clean the array of directors ##
-// #########################################################
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
