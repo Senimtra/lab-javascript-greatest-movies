@@ -78,7 +78,6 @@ function orderByYear(movies) {
       return a.year - b.year;
     }
   });
-  console.log(sortArr);
   return sortArr;
 }
 
@@ -98,12 +97,11 @@ function orderAlphabetically(movies) {
 // ######################################
 
 // ### Turn duration of the movies from hours to minutes ###
+
 function turnHoursToMinutes(movies) {
   const movieMinutes = movies.map((film) => {
     const hours = film.duration.split('h');
     const minutes = film.duration.slice(3, -3);
-    console.log(hours[0]);
-    console.log(Number(minutes));
     return {
       title: film.title,
       year: film.year,
@@ -113,12 +111,38 @@ function turnHoursToMinutes(movies) {
       score: film.score
     };
   });
-  console.log(movieMinutes);
   return movieMinutes;
 }
 
-// BONUS - Iteration 8: Best yearly score average - Best yearly score average
-function bestYearAvg() {}
+// ####################################################
+// ## BONUS - Iteration 8: Best yearly score average ##
+// ####################################################
+
+// ### Find the best yearly score average
+
+function bestYearAvg(movies) {
+  const resultArr = [];
+  movies.forEach((movie) => {
+    const filmsByYear = movies.filter((film) => film.year == movie.year);
+    const scorePerYear = filmsByYear.reduce((sum, entry) => {
+      return sum + entry.score / filmsByYear.length;
+    }, 0);
+    let resultObj = {};
+    resultObj.year = movie.year;
+    resultObj.score = scorePerYear;
+    resultArr.push(resultObj);
+  });
+  let resultSort = resultArr.sort((a, b) => b.score - a.score);
+  let filterYears = resultSort.filter(
+    (year) => year.score === resultSort[0].score
+  );
+  let finalArr = filterYears.sort((a, b) => a.year - b.year);
+  if (!finalArr.length) {
+    return null;
+  } else {
+    return `The best year was ${finalArr[0].year} with an average score of ${finalArr[0].score}`;
+  }
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
